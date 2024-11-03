@@ -1,0 +1,49 @@
+
+<h2>Liste des articles</h2> <br>
+
+<table class="table table-striped">
+    <tbody>
+      @for (article of articles; track $index) {
+        <tr class="table-dark">
+            <td>
+                <figure class="container mt-3">
+                    <img width="200px" height="auto" src="{{article.img}}" alt="photo_article">
+                </figure>
+            </td>
+            <td>
+                <div id="detailArticle" class="container mt-3">
+                    <div class="titre" class="container mt-3">
+                        <strong>{{article.titre}}</strong>
+                    </div>
+                    <div id="date" class="container mt-3">
+                        <strong>date de publication:</strong><br>
+                        {{article.date}}
+                    </div>
+                    <div id="description" class="container mt-3">
+                        <strong>Description:</strong><br>
+                            {{article.desc}}
+                    </div>
+                </div>   
+            </td>
+            <td>
+                <div class="container mt-3">
+                    <button class="btn btn-success" (click)="upScore(article)">Up</button> <br> <br>
+                    <button class="btn btn-danger"(click)="downScore(article)">Down</button> <br><br>
+                    <strong>Score: </strong>{{article.score}}
+                </div>
+            </td>
+        </tr>
+      }
+    </tbody>
+</table>
+
+<br>
+<button class="btn btn-primary"
+(click)="changeAction('add')"
+>Ajouter un article</button> <br><br>
+@if (action==="add"){
+    <app-add-article 
+    [lastID]="articles[articles.length-1].id"
+    (articleCreated)="addArticle($event)"
+    ></app-add-article>
+}

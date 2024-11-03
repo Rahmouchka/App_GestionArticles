@@ -1,0 +1,18 @@
+<h2>Ajout d'un nouveau article</h2>
+<form id="addForm">
+    <div class="mb-3">
+        <label for="img" class="form-label">URL image</label>
+        <input type="text" class="form-control" id="img" #titre/>
+    </div>
+    <div class="mb-3">
+      <label for="titre" class="form-label">Titre</label>
+      <input type="text" class="form-control" id="titre" #img/>
+    </div>
+    <div class="mb-3">
+      <label for="desc" class="form-label">Description</label>
+      <input type="text" class="form-control" id="desc" #desc/>
+    </div>
+    <button type="button" id="btnValidAdd" 
+    class="btn btn-warning"
+    (click)="addArticle(img.value,titre.value,desc.value)">Valider</button>
+</form>
