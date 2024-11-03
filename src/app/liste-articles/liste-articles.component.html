@@ -1,9 +1,9 @@
-
+<input type="text" placeholder="Rechercher par titre" [(ngModel)]="searchTerm" class="form-control mb-3">
 <h2>Liste des articles</h2> <br>
 
 <table class="table table-striped">
     <tbody>
-      @for (article of articles; track $index) {
+      @for (article of filteredArticles; track $index) {
         <tr class="table-dark">
             <td>
                 <figure class="container mt-3">

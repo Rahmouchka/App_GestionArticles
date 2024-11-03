@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Article } from '../model/article';
 import { AddArticleComponent } from '../add-article/add-article.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-liste-articles',
   standalone: true,
-  imports: [AddArticleComponent],
+  imports: [AddArticleComponent,FormsModule],
   templateUrl: './liste-articles.component.html',
   styleUrl: './liste-articles.component.css'
 })
@@ -44,6 +45,7 @@ export class ListeArticlesComponent {
   ];
 
   action="";
+  searchTerm= '';
   
   changeAction(action:string){
     this.action=action;
@@ -75,4 +77,10 @@ export class ListeArticlesComponent {
     }
   }
 
+  get filteredArticles(): Article[] {
+    return this.articles.filter(article => 
+      article.titre.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+  
 }
